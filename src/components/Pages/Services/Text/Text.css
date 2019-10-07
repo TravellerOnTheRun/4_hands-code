@@ -1,0 +1,117 @@
+/*@font-face {
+	font-family: 'Conv_Amatic_SC';
+	src: url('../../../../assets/fonts/Asmatic_SC/fonts/Amatic_SC.woff') format('woff');
+	src: local('☺'), url('fonts/Amatic_SC.woff') format('woff'), url('fonts/Amatic_SC.ttf') format('truetype'), url('fonts/Amatic_SC.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}*/
+
+@font-face {
+	font-family: 'Conv_Mipgost';
+	src: url('../../../../assets/fonts/Mipgost/fonts/Mipgost.woff') format('woff');
+	/*src: local('☺'), url('fonts/Mipgost.woff') format('woff'), url('fonts/Mipgost.ttf') format('truetype'), url('fonts/Mipgost.svg') format('svg');*/
+	font-weight: normal;
+	font-style: normal;
+}
+
+p {
+	font-family: 'Conv_Mipgost', sans-serif;
+	font-size: 25px;
+	color: #fafafa;
+}
+
+.row {
+	margin-top: 10%;
+  display: flex;
+  
+}
+
+.column {
+  flex: 50%;
+  text-align: left;
+  margin-top: 3%
+  
+}
+
+.column {
+	margin-left: 5%;
+	border-right: 3px solid #dedcdb;
+	padding-right: 1.5%;
+}
+
+.separate {
+	margin-left: 2%;
+	border-right: none;
+}
+
+
+@media screen and (max-width: 600px) {
+ .column {
+    width: 100%;
+  }
+
+}
+
+.head_pricing {
+	margin: 0;
+	padding: 10% 5%;
+	padding-bottom: 0;
+	text-align: left;
+	font-size: 30px;
+	border-bottom: 6px solid #dedcdb;
+}
+
+/*.head_pricing:before, 
+.head_pricing:after {
+    background-color: #dedcdb;
+    content: "";
+    display: inline-block;
+    height: 2.5px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+
+}*/
+
+.pricing_info {
+	margin: 0;
+	padding: 10% 17%;
+	text-align: left;
+}
+
+.paragraph1 {
+	margin-top: 0;
+	padding-top: 3%;
+}
+
+.paragraph2 {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.box {
+	
+	height: 5%;
+	/*border-bottom: 3px solid #dedcdb;*/
+	padding-bottom: 1%; 
+	display: flex;
+	justify-content: space-around;
+	padding-top: 10%;
+}
+
+.point {
+	font-size: 25px;
+	padding: 0;
+	border-bottom: 3px solid #dedcdb;
+	list-style-type: b
+}
+
+.phone,
+.talk,
+.thumbup {
+	border-radius: 50%;
+	border: 5px solid #fafafa;
+}
+
+
+
