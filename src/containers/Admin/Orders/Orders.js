@@ -9,10 +9,12 @@ import NewOrder from '../../../components/NewOrder/NewOrder';
 import axios from 'axios';
 
 const Orders = props => {
+	//State of the Orders
 	const [ creatingOrder, setCreatingOrder ] = useState(false);
 	const [ currentOrders, setCurrentOrders ] = useState([]);
 	const [ archivedOrders, setArchivedOrders ] = useState([]);
 
+	//Fetch the orders
 	useEffect(() => {
 		axios.get('https://portfolio-ccandpc.firebaseio.com/orders.json?auth=' + props.token)
 			.then( response => {
@@ -22,7 +24,7 @@ const Orders = props => {
 					const newObject = {
 						id: order,
 						...response.data.current[order]
-					}
+					};
 					currentOrdersArray.push(newObject);
 				};
 				if(response.data.archived) {
@@ -33,7 +35,7 @@ const Orders = props => {
 						}
 						archivedOrdersArray.push(newObject);
 					};
-					setArchivedOrders(response.data.archived);
+					setArchivedOrders(archivedOrdersArray);
 				};
 				setCurrentOrders(currentOrdersArray);
 				
@@ -51,10 +53,14 @@ const Orders = props => {
 		//Delete The Finished order from the database
 		orderToDelete = currentOrders.filter(order => nameOfTheOrder === order.nameOfTheOrder);
 		const id = orderToDelete[0].id;
-		axios.delete(`https://portfolio-ccandpc.firebaseio.com/orders/current/${id}.json?auth=${props.token}`)
+		axios.delete(`https://portfolio-ccandpc.firebaseio.com/orders/current/${id}.json?auth=${props.token}`);
 
 		//Add The Finished order to archived node of the Database
-		//TODO
+		axios.post(`https://portfolio-ccandpc.firebaseio.com/orders/archived.json?auth=${props.token}`, orderToDelete[0])
+			.then(response => {
+				alert(`Posted ${id} to the database`);
+			})
+			.catch(error => console.log(error));
 	};
 
 	const creatingOrderHandler = () => {
@@ -62,11 +68,10 @@ const Orders = props => {
 	};
 	let newOrderComponent = null;
 	if(creatingOrder) {
-		newOrderComponent = <NewOrder creatingOrder={creatingOrderHandler} />
+		newOrderComponent = <NewOrder 
+								ordersProps={props} 
+								creatingOrder={creatingOrderHandler} />
 	};
-
-	
-	
 
 	return (
 			<div>
@@ -76,11 +81,12 @@ const Orders = props => {
 							<li><HashLink to='/admin-4h_ands/orders#current'>current</HashLink></li>
 							<li><HashLink to='/admin-4h_ands/orders#finished'>finished</HashLink></li>
 						</ul>
-						<Button clicked={creatingOrderHandler}>New Order</Button>
+						<HashLink to="/admin-4h_ands/orders#neworder"><Button clicked={creatingOrderHandler}>New Order</Button></HashLink>
 					</nav>
 				</header>
-				<div className='current'>
+				<div id='current'>
 					<Container>
+						<h1>Current Orders</h1>
 						{currentOrders.map(order => (
 							<Card key={order.nameOfTheOrder}>
 								<h1>{order.nameOfTheOrder}</h1>
@@ -95,10 +101,11 @@ const Orders = props => {
 						))}
 					</Container>
 				</div>
-				<div className='finished'>
+				<div id='finished'>
 					<Container>
+						<h1>Archived Orders</h1>
 						{archivedOrders.map(order => (
-							<Card>
+							<Card key={order.nameOfTheOrder}>
 								<h1>{order.nameOfTheOrder}</h1>
 								<p>{order.description}</p>
 								<h2>{order.name}</h2>
@@ -110,7 +117,7 @@ const Orders = props => {
 						))}
 					</Container>
 				</div>
-				{newOrderComponent}
+				<div id='neworder'>{newOrderComponent}</div>
 			</div>
 	);
 };
