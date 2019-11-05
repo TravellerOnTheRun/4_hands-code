@@ -1,12 +1,14 @@
-.App
-	{
-		text-align: center;
-		background-image: url('../../assets/Pictures/Landscape1.jpg');
-		background-size: cover;
-		/*height: 1000px;*/
-		margin: 0;
-		padding: 2% 0; /*vertical horizontal*/
-		color: #fafafa;
-	}
+html {
+	margin: 0;
+	padding: 0;
+	background-color: #C27D38;
+	width: 100%;
+}
+
+.App {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+}
 
 

@@ -1,0 +1,29 @@
+
+.nav {
+    display: block;
+    width: 100vw;
+    height: 5vh;
+    background-color: #798E87;
+    margin: 0;
+
+}
+
+ul {
+    margin: 0 0;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+}
+
+li a {
+    list-style: none;
+    text-decoration: none;
+    color: #CCC591;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+}
+

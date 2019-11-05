@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Nav = (props) =>  {
 	return (
-		<nav>
+
+		<nav className='nav'>
 			<ul>
 				{props.navLinks.map(navLink => {
 					return (
