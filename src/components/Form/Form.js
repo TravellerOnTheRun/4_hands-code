@@ -97,7 +97,7 @@ class Form extends Component {
 			};	
 		};
 
-		axios.post('/calls/await.json?auth=' + this.props.token, formData)
+		axios.post('/calls/await.json', formData)
 			.then(response => {
 				this.setState({loading:false})
 				this.props.history.push('/')

@@ -20,7 +20,7 @@ const Jumbo = (props) => {
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat.</p>
 					<Button><Link to='/services'>Services</Link></Button>
-					<Button>Something</Button>
+					<Button><HashLink to="/#form">Schedule a call</HashLink></Button>
 				</div>
 				);
 			break;
@@ -47,6 +47,7 @@ const Jumbo = (props) => {
 					Есть ли здесь какая-то схема?</p>
 					</div>
 					<Button ownStyle='Button'><HashLink className='btn' to='/services#form'>Назначить встречу и выяснить</HashLink></Button>
+					<Button ownStyle='Button'><HashLink className='btn' to='/services#read'>Читать дальше</HashLink></Button>
 				</div>
 				);
 			break;

@@ -11,7 +11,10 @@ import Contact from '../../components/Pages/Contact/Contact';
 import Auth from '../Authentication/Auth';
 import Admin from '../Admin/Admin';
 
-import Nav from '../../components/Nav/Nav';
+//Navigation realted items
+import Toolbar from '../../components/Nav/Toolbar/Toolbar';
+import SideDrawer from '../../components/Nav/SideDrawer/SideDrawer';
+
 import Footer from '../../components/Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
 
@@ -80,8 +83,13 @@ const  Portfolio = props => {
 
 	return(
 		<div>
-			<Nav navLinks={linksArray} />
-			{routes}
+			<div className='layout'>
+				<Toolbar navLinks={navLinksArray}/>
+				<SideDrawer />
+				<main>
+					{routes}
+				</main>
+			</div>
 			<Footer />
 		</div>
 	);
