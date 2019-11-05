@@ -1,38 +1,35 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { newClientData } from '../Form/formData';
 import axios from 'axios';
 
-import { newOrderData } from'../../components/Form/formData';
-
+import Input from '../Form/Input/Input';
 import Card from '../Reusables/Card/Card';
-import Input from '../../components/Form/Input/Input';
 import Button from '../Reusables/Button/Button';
 
-
-
-const NewOrder = props => {
-
-    const [ form, setForm ] = useState(newOrderData);
+const NewClient = props => {
+    const [ form, setForm ] = useState(newClientData);
 
     const inputChangedHandler = (event, inputIdentifier) => {
         const updatedForm = { ...form };
         const updatedFormElement = { ...updatedForm[inputIdentifier] };
         updatedFormElement.value = event.target.value;
         updatedForm[inputIdentifier] = updatedFormElement;
+        console.log(updatedForm);
         setForm(updatedForm);
     };
 
-    const submitTheOrder = (event) => {
+    const submitTheClient = (event) => {
         event.preventDefault();
         const formData = {};
 
         for( let element in form) {
             formData[element] = form[element].value;
         };
-        axios.post('https://portfolio-ccandpc.firebaseio.com/orders/current.json?auth=' + props.token, formData)
+        axios.post('https://portfolio-ccandpc.firebaseio.com/clients.json?auth=' + props.token, formData)
             .then( response => {
-                props.creatingOrder();
-                alert('New Order has been published');
+                props.toggleClientMaker();
+                alert('New Client has been added');
             });
     };
 
@@ -48,10 +45,11 @@ const NewOrder = props => {
             config: form[key]
         })
     };
+    
 
     return (
         <Card>
-            <form onSubmit={submitTheOrder}>
+            <form onSubmit={submitTheClient}>
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}
@@ -74,4 +72,5 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(NewOrder);
+
+export default connect(mapStateToProps)(NewClient);

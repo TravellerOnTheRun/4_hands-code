@@ -7,7 +7,7 @@ import Form from '../../Form/Form';
 const Services = () =>(
 	<div>
 		<Jumbo className='jumbot' type='services' />
-		<Text className='textbox'/>
+		<div id="read"><Text className='textbox'/></div>
 		<div id='form'><Form/></div>
 	</div>
 );

@@ -1,10 +1,11 @@
 //Data variables
 
+//OPTION VALUES ARRAYS
 const genderArray = [
 		{value:'male', displayValue:'Male'}, 
 		{value:'female', displayValue:'Female'}, 
 		{value:'other', displayValue:'Other'}
-	];
+];
 const timezoneArray = [
 	{value: 'PP_utc-11', displayValue: 'GMT/UTC-11		Pacific/Pago_Pago	Country: American Samoa		City: Pago Pago'},
 	{value: 'PT_utc-10', displayValue:'GMT/UTC-10		Pacific/Tahiti	Country: French Polynesia	City: Papeete'},
@@ -32,9 +33,17 @@ const timezoneArray = [
 	{value: 'PAN_utc+12', displayValue:'GMT/UTC+12	Pacific/Auckland	Country: New Zealand	City: Wellington'},
 	{value: 'PAS_utc+13', displayValue:'GMT/UTC+13	Pacific/Apia	Country: Samoa	City: Apia'},
 	{value: 'PK_utc+14', displayValue:'GMT/UTC+14	Pacific/Kiritimati	Country: Kiribati	City: Tarawa'},
+];
 
+const subscribtionArray = [
+	{ value: 'debugging', displayValue: 'Debugging' },
+	{ value: 'maintanance', displayValue: 'Maintanance'}
+];
 
-	];
+const emailSubscribtionArray = [
+	{ value: 'newsletter', displayValue: 'Newsletter' },
+	{ value: 'specialOffer', displayValue: 'Special Offer'}
+];
 
 //Helper Constructor Functions
 const formInputCreator = (elType, label, configType, configPlaceholder, optional, required, valid) => {
@@ -122,6 +131,19 @@ export const newOrderData = {
 	name: formInputCreator('input', 'Name', 'text', 'name'),
 	contactData: formInputCreator('input', 'Contact Data', 'text', 'contact data'),
 	location: formInputCreator('input', 'Location', 'text', 'location'),
-	timezone: formInputCreator('input', 'Time', 'text', 'time zone'),
-	notes: formInputCreator('textarea', 'Description', 'text', 'Notes:' ),
+	timezone: formInputCreator('input', 'Timezone', 'text', 'time zone'),
+	notes: formInputCreator('textarea', 'Notes', 'text', 'Notes:' ),
+};
+
+export const newClientData = {
+	image: formInputCreator('file', 'Image', 'file'),
+	link: formInputCreator('input', 'Link', 'text', 'link from their website' ),
+	name: formInputCreator('input', 'Name', 'text', 'enter the name'),
+	character: formInputCreator('textarea', 'Character', 'text', 'describe the character'),
+	subscribtion: formOptionsInputCreator('select', 'Subscribtion', subscribtionArray),
+	email_subsribtion: formOptionsInputCreator('select', 'Email Subscribtion', emailSubscribtionArray),
+	contactData: formInputCreator('input', 'Contact Data', 'text', 'contact data'),
+	moneyTransaction: formInputCreator('input', 'Money Transaction', 'text', 'how much money paid'),
+	projects: formInputCreator('input', 'Finished Projects', 'text', 'how many projects finished'),
+	satisfactionRate: formInputCreator('input', 'Satisfaction Rate', 'text', 'how satisfied the client is')
 };
