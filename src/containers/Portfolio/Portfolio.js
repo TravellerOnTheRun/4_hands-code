@@ -14,6 +14,13 @@ import Contact from '../../components/Pages/Contact/Contact';
 import Auth from '../Authentication/Auth';
 import Admin from '../Admin/Admin';
 
+
+
+//Navigation realted items
+import Nav from '../../components/Nav/Nav';
+import Toolbar from '../../components/Nav/Toolbar/Toolbar';
+import SideDrawer from '../../components/Nav/SideDrawer/SideDrawer';
+
 import Footer from '../../components/Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
 
@@ -33,15 +40,15 @@ const navLinksArray = [
 	},
 	{
 		className: 'a three',
-		to: '/services/',
-		label: 'Услуги',
-		id: 'uslugi'
-	},
-	{
-		className: 'a four',
 		to: '/contact/',
 		label: 'Связь',
 		id: 'svyaz'
+	}, 
+	{
+		className: 'a four',
+		to: '/services/',
+		label: 'Услуги',
+		id: 'uslugi'
 	}
 ];
 		

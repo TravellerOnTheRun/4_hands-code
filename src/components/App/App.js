@@ -28,3 +28,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(null, mapDispatchToProps)(App);
+
+
+/* 
+mobileNav = document.querySelector('.mobile-nav');
+toggleButton = document.querySelector('.toggle-button');
+backdrop = 
+*/
