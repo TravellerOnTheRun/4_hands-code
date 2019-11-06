@@ -1,7 +1,10 @@
 import React from 'react';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-forms';
 import { connect } from 'react-redux';
+
+//HOCs
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import Layout from '../../hoc/Layout/Layout';
 
 
 import Home from '../../components/Pages/Home/Home';
@@ -10,10 +13,6 @@ import Services from '../../components/Pages/Services/Services';
 import Contact from '../../components/Pages/Contact/Contact';
 import Auth from '../Authentication/Auth';
 import Admin from '../Admin/Admin';
-
-//Navigation realted items
-import Toolbar from '../../components/Nav/Toolbar/Toolbar';
-import SideDrawer from '../../components/Nav/SideDrawer/SideDrawer';
 
 import Footer from '../../components/Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
@@ -82,16 +81,10 @@ const  Portfolio = props => {
 	};
 
 	return(
-		<div>
-			<div className='layout'>
-				<Toolbar navLinks={navLinksArray}/>
-				<SideDrawer />
-				<main>
-					{routes}
-				</main>
-			</div>
+		<Layout navLinks={linksArray}>
+			{routes}
 			<Footer />
-		</div>
+		</Layout>
 	);
 };
 
