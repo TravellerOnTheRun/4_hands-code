@@ -3,15 +3,19 @@
     display: block;
     width: 100vw;
     height: 5vh;
-    background-color: #798E87;
+    background-color: #C27D38;
     margin: 0;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 
 ul {
     margin: 0 0;
     padding: 0.5rem 0;
     text-align: center;
+    vertical-align: center;
 }
 
 li {
@@ -27,3 +31,20 @@ li a {
     font-weight: bold;
 }
 
+li a:hover,
+li a:active {
+    border-bottom: 1rem solid #8E2E08;
+}
+
+.four {
+    background-color: #8E2E08;
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.four:hover,
+.four:active {
+    background-color: #CCC591;
+    color: #8E2E08;
+    border: none;
+}

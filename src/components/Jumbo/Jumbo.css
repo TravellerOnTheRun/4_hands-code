@@ -1,0 +1,23 @@
+.home-jumbo {
+    background-image: url(../../images/jumbo.png);
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    height: 30vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 5vh;
+    width: 100vw;
+}
+
+#services-button {
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    position: absolute;
+    bottom: 5vh;
+    left: 30vh;
+    background-color: linear-gradient(top to bottom, #C27D38, #8E2E08);
+    border-radius: 0.5rem;
+}
