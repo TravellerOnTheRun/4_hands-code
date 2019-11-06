@@ -1,0 +1,23 @@
+.home-jumbo {
+    background-image: url(../../images/jumbo.png);
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    height: 30vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100vw;
+}
+
+.card-title {
+    margin: 0;
+    padding: 0;
+}
+
+.home-jumbo .services-button {
+    margin: 0;
+    position: absolute;
+    bottom: 5vh;
+    left: 30vh;
+}

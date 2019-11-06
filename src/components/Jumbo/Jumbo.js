@@ -13,14 +13,11 @@ const Jumbo = (props) => {
 	switch(props.type) {
 		case 'home':
 			jumbo = (
-				<div className='jumbo'>
-					<h1 className='card-title'>Home Jumbotron</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat.</p>
-					<Button><Link to='/services'>Services</Link></Button>
-					<Button><HashLink to="/#form">Schedule a call</HashLink></Button>
+				<div className='jumbo home-jumbo'>
+					<h1 className='card-title'></h1>
+					<p></p>
+					<Button className='services-button'><Link to='/services'>Services</Link></Button>
+					<Button className='schedule-a-call-button'><HashLink to="/#form">Schedule a call</HashLink></Button>
 				</div>
 				);
 			break;
