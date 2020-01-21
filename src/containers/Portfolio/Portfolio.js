@@ -14,13 +14,6 @@ import Contact from '../../components/Pages/Contact/Contact';
 import Auth from '../Authentication/Auth';
 import Admin from '../Admin/Admin';
 
-
-
-//Navigation realted items
-import Nav from '../../components/Nav/Nav';
-import Toolbar from '../../components/Nav/Toolbar/Toolbar';
-import SideDrawer from '../../components/Nav/SideDrawer/SideDrawer';
-
 import Footer from '../../components/Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
 

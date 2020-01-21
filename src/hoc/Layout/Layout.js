@@ -13,8 +13,6 @@ const Layout = props => {
 	const toggleSideDrawer = () => {
 		setShowSideDrawer(!showSideDrawer);
 	};
-
-
 		return(
 			<React.Fragment>
 				<Toolbar

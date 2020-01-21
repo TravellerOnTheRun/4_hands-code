@@ -5,7 +5,6 @@
     height: 5vh;
     background-color: #C27D38;
     margin: 0;
-    position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
@@ -13,13 +12,13 @@
 
 ul {
     margin: 0 0;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     text-align: center;
-    vertical-align: center;
 }
 
 li {
     display: inline-block;
+    
 }
 
 li a {
@@ -29,6 +28,7 @@ li a {
     margin: 0;
     padding: 0.5rem 1rem;
     font-weight: bold;
+    vertical-align: middle;
 }
 
 li a:hover,

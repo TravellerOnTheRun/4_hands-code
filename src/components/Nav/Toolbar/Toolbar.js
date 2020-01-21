@@ -6,8 +6,8 @@ import Logo from '../Logo/Logo';
 
 const Toolbar = ( props ) => (
     <header>
-        <DrawerToggle/>
-        <Logo/>
+        <DrawerToggle className='drawerToggle'/>
+        <Logo/> 
         <Nav navLinks={props.navLinks}/>
     </header>
 );

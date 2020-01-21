@@ -1,5 +1,6 @@
 import React from 'react';
-// import logo from '../../assets/Images/burger-logo.png'
+// import logo from '../../assets/Images/burger-logo.png';
+
 
 const Logo = (props) => (
 		<div className='logo'>
