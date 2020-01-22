@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 //HOCs
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import Layout from '../../hoc/Layout/Layout';
 
 
 import Home from '../../components/Pages/Home/Home';
@@ -14,6 +13,7 @@ import Contact from '../../components/Pages/Contact/Contact';
 import Auth from '../Authentication/Auth';
 import Admin from '../Admin/Admin';
 
+import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
 
@@ -81,10 +81,15 @@ const  Portfolio = props => {
 	};
 
 	return(
-		<Layout navLinks={linksArray}>
-			{routes}
+		<React.Fragment>
+			<header>
+				<Nav navLinks={navLinksArray}/>
+			</header>
+			<main>
+				{routes}
+			</main>
 			<Footer />
-		</Layout>
+		</React.Fragment>			
 	);
 };
 
