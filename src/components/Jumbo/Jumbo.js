@@ -23,10 +23,12 @@ const Jumbo = (props) => {
 			jumbo = (
 				<div className='jumbo'>
 					<h1>About Jumbotron</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat.</p>
+					<p>Итак, вы решили, что вам нужен вебсайт. У вас малый бизнес? Средний? Вы руководите некомерческой огранизацией? 
+						Может, у вас уже есть идея того, чего вы хотите от своего сайта, может уже написаны тексты. 
+						А может вы ничего не подготовили и знаете только одно - вам нужен сайт. В любом из этих случаев вы обратились по адресу. 
+                        В наше время у вас нет бизнеса, если вашего сайта нет в интернете. И это здорово, ведь вы позволяете людям со всего мира 
+						пользоваться вашими услугами, покупать ваши товары. Спасибо вам за это. А наша работа - помочь вам эти услуши и товары донести 
+						до людей с максимальным комфортом.</p>
 					<Button><HashLink to='/about#form'>Schedule an E-meeting</HashLink></Button>
 				</div>
 				);

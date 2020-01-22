@@ -2,18 +2,20 @@
 .nav {
     display: block;
     width: 100vw;
-    height: 5vh;
+    height: 10vh;
     background-color: #C27D38;
     margin: 0;
     top: 0;
     left: 0;
     z-index: 10;
+    position: fixed;
+    box-sizing: border-box;
 }
 
 ul {
     margin: 0 0;
-    padding: 1rem 0;
-    text-align: center;
+    padding: 1rem 1rem;
+    text-align: right;
 }
 
 li {
@@ -33,7 +35,8 @@ li a {
 
 li a:hover,
 li a:active {
-    border-bottom: 1rem solid #8E2E08;
+    /* border-bottom: 1rem solid #8E2E08; */
+    color: #8E2E08;
 }
 
 .four {
