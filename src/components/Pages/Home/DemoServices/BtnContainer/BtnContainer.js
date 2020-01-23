@@ -5,13 +5,13 @@ const BtnContainer = (props) =>
 	{
 		return (
 			<div>
-				<Button clicked={() =>props.textChanger('Custom Design')}>Custom Design</Button>
-				<Button clicked={() =>props.textChanger('Content Creation')}>Content Creation</Button>
-				<Button clicked={() =>props.textChanger('Copywriting')}>Copywriting</Button>
+				<Button clicked={() =>props.textChanger('Custom Design')}>Индивидуальный дизайн</Button>
+				<Button clicked={() =>props.textChanger('Content Creation')}>Создание контента</Button>
+				<Button clicked={() =>props.textChanger('Copywriting')}>Копирайтинг</Button>
 				<Button clicked={() =>props.textChanger('SEO')}>SEO</Button>
-				<Button clicked={() =>props.textChanger('Project Management')}>Project Management</Button>
-				<Button clicked={() =>props.textChanger('Testing and Training')}>Testing and Training</Button>
-				<Button clicked={() =>props.textChanger('Consultations')}>Consultations</Button>
+				<Button clicked={() =>props.textChanger('Project Management')}>Менеджмент проекта</Button>
+				<Button clicked={() =>props.textChanger('Testing and Training')}>Тестирование и обучение</Button>
+				<Button clicked={() =>props.textChanger('Consultations')}>Консультации</Button>
 			</div>
 
 		);
