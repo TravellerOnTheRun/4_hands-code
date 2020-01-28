@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { authFormData } from '../../components/Form/formData';
+import { authFormData, signupKey, signupData } from '../../components/Form/formData';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
@@ -8,6 +8,7 @@ import Button from '../../components/Reusables/Button/Button';
 import Spinner from '../../components/Reusables/Spinner/Spinner';
 
 import './Auth.css';
+import axios from 'axios';
 
 
 
@@ -17,9 +18,10 @@ class Auth extends Component {
 			...authFormData
 		},
 		loading: false,
-		error: null
+		error: null,
+		signupState: 'signin'
 	};
-		checkValidity(value, rules) {
+	checkValidity(value, rules) {
 		let isValid = true;
 		if (!rules) {
 				return true;
@@ -65,6 +67,38 @@ class Auth extends Component {
 		this.props.history.push('/admin-4h_ands');
 	};
 
+	changeToSignup = () => {
+		this.setState({ signupState: 'key', controls: { ...signupKey }  });
+	};
+
+	verifyKey = (event) => {
+		event.preventDefault();
+		axios.post('http://localhost:8080/auth/postGetSignup', {
+			key: this.state.controls.key.value
+		})
+		.then(res => {
+			if(res.status === 200) {
+				this.setState({ signupState: 'signup', controls: { ...signupData }});
+			} else {
+				throw new Error(`There's something wrong with your key`);
+			}
+		})
+		.catch(err => console.log(err));
+	};
+
+	signAdminUp = (event) => {
+		const { name, email, password, confirmPassword } = this.state.controls;
+		event.preventDefault();
+		if(password.value !== confirmPassword.value) {
+			//handle error, let user know
+			console.log('The passwords do not match');
+		} else {
+			this.props.onSignup(name.value, email.value, password.value, ()=> {
+				this.props.history.push('/admin-4h_ands');
+			});
+		};
+	};
+
 	render() {
 		const formElementsArray = [];
 		for ( let key in this.state.controls ) {
@@ -93,17 +127,43 @@ class Auth extends Component {
 			<div className='Auth'> 
 				<form>
 					{ form }
-					<Button clicked={this.submitAuth}>Sign In</Button>
+					{ 
+						this.state.signupState === 'signin' 
+						? <Button clicked={this.submitAuth}>Sign In</Button> 
+						: ''
+					}
+					{ 
+						this.state.signupState === 'signin'
+						? <Button clicked={this.changeToSignup}>Verify the Key and Signup</Button> 
+						: ''
+					}
+					{
+						this.state.signupState === 'key'
+						? <Button clicked={this.verifyKey}>Verify the Key</Button>
+						: ''
+					}
+					{ 
+						this.state.signupState ==='signup'
+						? <Button clicked={this.signAdminUp}>Sign Up</Button>  
+						: ''
+					}
 				</form>
 			</div>
 		);
 	};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
 	return {
-		onAuth: (email, password) => dispatch(actions.auth(email, password))
+		url: state.url
 	};
 };
 
-export default connect(null, mapDispatchToProps)(Auth);
+const mapDispatchToProps = dispatch => {
+	return {
+		onAuth: (email, password) => dispatch(actions.auth(email, password)),
+		onSignup: (name, email, password, pushToAdminPage) => dispatch(actions.signup(name, email, password, pushToAdminPage))
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

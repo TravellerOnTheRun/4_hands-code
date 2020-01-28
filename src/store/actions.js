@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-//Constants from  sending requests
-const API_KEY = 'AIzaSyCUq_GtMEmXerw9McKq70WaAmqD8YBK1rY';
-const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=`;
-
 export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
@@ -15,12 +11,13 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (token, userId) => {
+export const authSuccess = (token, userId, url) => {
     return {
         type: AUTH_SUCCESS,
         payload: {
             token: token, 
-            userId: userId
+            userId: userId,
+            url: url
         }
     };
 };
@@ -45,7 +42,7 @@ export const checkAuthTimeout = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
             dispatch(authLogout());
-        }, expirationTime * 1000);
+        }, expirationTime);
     };
 };
 export const checkAutheticationState = () => {
@@ -57,7 +54,7 @@ export const checkAutheticationState = () => {
             const expirationDate = new Date(localStorage.getItem('expirationDate'));
             if(expirationDate > new Date()) {
                 dispatch(authSuccess(token, userId));
-                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000 ));
+                dispatch(checkAuthTimeout(expirationDate.getTime() - new Date().getTime()));
             } else {
                 dispatch(authLogout());
             };
@@ -70,23 +67,39 @@ export const auth = ( email, password ) => {
         dispatch(authStart());
         const authData = {
             email: email,
-            password: password,
-            returnSecureToken: true
+            password: password
         };
-        axios.post(`${url}${API_KEY}`, authData)
+        axios.post(`http://localhost:8080/auth/signin`, authData)
             .then( response => {
-                console.log(response.data);
-                localStorage.setItem('token', response.data.idToken);
-                localStorage.setItem('userId', response.data.localId);
-                const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('userId', response.data.userId);
+                const expirationDate = new Date(new Date().getTime() + response.data.expiresIn);
                 localStorage.setItem('expirationDate', expirationDate);
-                dispatch(authSuccess(response.data.idToken, response.data.localId));
+                dispatch(authSuccess(response.data.token, response.data.userId, '/admin-4h_ands'));
                 dispatch(checkAuthTimeout(response.data.expiresIn));
             }).catch(error => {
                 console.log(error.message);
                 dispatch(authFailure(error));
             });
     };
+};
+
+export const signup = (name, email, password, pushToAdminPage) => {
+    return dispatch => {
+        const signupData = {
+            name,
+            email,
+            password
+        };
+        axios.post('http://localhost:8080/auth/signup', signupData)
+            .then(res => {
+                return dispatch(auth(signupData.email, signupData.password));
+            })
+            .then(() => {
+                pushToAdminPage();
+            })
+            .catch(err => console.log(err));
+    }
 };
 
 
