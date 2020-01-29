@@ -1,38 +1,33 @@
 //Data variables
 
 //OPTION VALUES ARRAYS
-const genderArray = [
-		{value:'male', displayValue:'Male'}, 
-		{value:'female', displayValue:'Female'}, 
-		{value:'other', displayValue:'Other'}
-];
 const timezoneArray = [
-	{value: 'PP_utc-11', displayValue: 'GMT/UTC-11		Pacific/Pago_Pago	Country: American Samoa		City: Pago Pago'},
-	{value: 'PT_utc-10', displayValue:'GMT/UTC-10		Pacific/Tahiti	Country: French Polynesia	City: Papeete'},
-	{value: 'AS_utc-9', displayValue:'GMT/UTC-9	America/Sitka	Country: United States	City:Sitka'},
-	{value: 'AV_utc-8', displayValue:'GMT/UTC-8	America/Vancouver	Country: Canada 	City: Vancouver'},
-	{value: 'AF_utc-7', displayValue:'GMT/UTC-7	America/Phoenix	Country: United States	City: Phoenix'},
-	{value: 'AM_utc-6', displayValue:'GMT/UTC-6	America/Mexico_City	Country: Mexico 	City: Mexico City'},
-	{value: 'AT_utc-5', displayValue:'GMT/UTC-5	America/Toronto	Country: Canada City: Toronto'},
-	{value: 'AA_utc-4', displayValue:'GMT/UTC-4	America/Asuncion	Country: Paraguay	City: Asunción'},
-	{value: 'AAB_utc-3', displayValue:'GMT/UTC-3 	America/Argentina/Buenos_Aires	Country: Argentina		City:Buenos Aires'},
-	{value: 'ANC_utc-2', displayValue:'GMT/UTC-2 	America/Noronha	Coutry: Brazil	City: Itamaracá'},
-	{value: 'AAP_utc-1', displayValue:'GMT/UTC-1 	Atlantic/Azores	Country: Portugal	City: Ponta Delgada'},
-	{value: 'EL_utc-0', displayValue:'GMT/UTC+0 	Europe/London	Country:United Kingdom	City: London'},
-	{value: 'EB_utc+1', displayValue:'GMT/UTC+1	Europe/Berlin	Country:Germany		City: Berlin'},
-	{value: 'EH_utc+2', displayValue:'GMT/UTC+2	Europe/Helsinki		Country:Finland		City: Helsinki'},
-	{value: 'EM_utc+3', displayValue:'GMT/UTC+3	Europe/Moscow	Country: Russia		City: Moscow'},
-	{value: 'AD_utc+4', displayValue:'GMT/UTC+4	Asia/Dubai	Country: United Arab Emirates	City: Dubai'},
-	{value: 'AY_utc+5', displayValue:'GMT/UTC+5	Asia/Yekaterinburg	Country: Russia		City: Yekaterinburg'},
-	{value: 'AAK_utc+6', displayValue:'GMT/UTC+6	Asia/Almaty		Country:Kazakhstan		City: Almaty'},
-	{value: 'ABT_utc+7', displayValue:'GMT/UTC+7	Asia/Bangkok	Country: Thailand	City: Bangkok'},
-	{value: 'AI_utc+8', displayValue:'GMT/UTC+8	Asia/Irkutsk	Country: Russia  City: Irkutsk'},
-	{value: 'AS_utc+9', displayValue:'GMT/UTC+9	Asia/Seoul	Country: South Korea	City: Seoul'},
-	{value: 'ASA_utc+10', displayValue:'GMT/UTC+10	Australia/Sydney	Country: Australia	City: Sydney'},
-	{value: 'ASR_utc+11', displayValue:'GMT/UTC+11	Asia/Sakhalin	Country: Russia	 City: Yuzhno-Sakhalinsk'},
-	{value: 'PAN_utc+12', displayValue:'GMT/UTC+12	Pacific/Auckland	Country: New Zealand	City: Wellington'},
-	{value: 'PAS_utc+13', displayValue:'GMT/UTC+13	Pacific/Apia	Country: Samoa	City: Apia'},
-	{value: 'PK_utc+14', displayValue:'GMT/UTC+14	Pacific/Kiritimati	Country: Kiribati	City: Tarawa'},
+	{value: 'utc-11', displayValue: 'GMT/UTC-11'},
+	{value: 'utc-10', displayValue:'GMT/UTC-10'},
+	{value: 'utc-9', displayValue:'GMT/UTC-9'},
+	{value: 'utc-8', displayValue:'GMT/UTC-8'},
+	{value: 'utc-7', displayValue:'GMT/UTC-7'},
+	{value: 'utc-6', displayValue:'GMT/UTC-6'},
+	{value: 'utc-5', displayValue:'GMT/UTC-5'},
+	{value: 'utc-4', displayValue:'GMT/UTC-4'},
+	{value: 'utc-3', displayValue:'GMT/UTC-3'},
+	{value: 'utc-2', displayValue:'GMT/UTC-2'},
+	{value: 'utc-1', displayValue:'GMT/UTC-1'},
+	{value: 'utc-0', displayValue:'GMT/UTC+0'},
+	{value: 'utc+1', displayValue:'GMT/UTC+1'},
+	{value: 'utc+2', displayValue:'GMT/UTC+2'},
+	{value: 'utc+3', displayValue:'GMT/UTC+3'},
+	{value: 'utc+4', displayValue:'GMT/UTC+4'},
+	{value: 'utc+5', displayValue:'GMT/UTC+5'},
+	{value: 'utc+6', displayValue:'GMT/UTC+6'},
+	{value: 'utc+7', displayValue:'GMT/UTC+7'},
+	{value: 'utc+8', displayValue:'GMT/UTC+8'},
+	{value: 'utc+9', displayValue:'GMT/UTC+9'},
+	{value: 'utc+10', displayValue:'GMT/UTC+10'},
+	{value: 'utc+11', displayValue:'GMT/UTC+11'},
+	{value: 'utc+12', displayValue:'GMT/UTC+12'},
+	{value: 'utc+13', displayValue:'GMT/UTC+13'},
+	{value: 'utc+14', displayValue:'GMT/UTC+14'},
 ];
 
 const subscribtionArray = [
@@ -81,15 +76,15 @@ const formOptionsInputCreator = (elType, label, options) =>{
 export const formData = {
 	name: formInputCreator('input', 'Name', 'text', 'Your Name', false, true, false),
 	email: formInputCreator('input', 'E-mail',  'email', 'Your E-mail', true, true, true),
-	whatsapp: formInputCreator('input', 'WhatsApp Number',  'number', 'Your WhatsApp Number', true, true, true),
+	whatsapp: formInputCreator('input', 'WhatsApp Number',  'text', 'Your WhatsApp Number', true, true, true),
+	telegram: formInputCreator('input', 'Telegram Number',  'text', 'Your Telegram Number', true, true, true),
 	skype: formInputCreator('input', 'Skype',  'text', 'Your Skype', true, true, true),
 	facebook:formInputCreator('input','Facebook',   'text', 'Link to your facebook account', true, true, true),
 	vk:formInputCreator('input','Vkontakte',  'text', 'Link to your VK account', true, true, true),
-	gender: formOptionsInputCreator('select','Gender',  genderArray),
 	country:formInputCreator('input', 'Country',  'text', 'Country which you are currently in', false, true, false),
 	city:formInputCreator('input', 'City',  'text', 'City which you are currently in', false, true, false),
 	timezone:formOptionsInputCreator('select', 'Timezone',  timezoneArray),
-	AdditonalInfo: formInputCreator('textarea', 'Additional information',   'text', 'Additional information we should know about. For example: available hours', true, false, true),
+	additionalInfo: formInputCreator('textarea', 'Additional information',   'text', 'Additional information we should know about. For example: available hours', true, false, true),
 };
 
 export const authFormData = {
@@ -123,6 +118,86 @@ export const authFormData = {
 		valid: false,
 		touched: false
 	}
+};
+
+export const signupData = {
+	name: {
+		label: 'Name/Nickname',
+		elementType: 'input',
+		elementConfig:{
+			type:'text',
+			placeholder: 'Name yourself, soldier'
+		},
+		value: '',
+		validation: {
+			required: true,
+		},
+		valid: false,
+		touched: false
+	},
+	email: {
+		label: 'E-mail',
+		elementType: 'input',
+		elementConfig:{
+			type:'email',
+			placeholder: 'E-mail'
+		},
+		value: '',
+		validation: {
+			required: true,
+			isEmail: true
+		},
+		valid: false,
+		touched: false
+	},
+	password: {
+		label: 'Password',
+		elementType: 'input',
+		elementConfig: {
+			type:'password',
+			placeholder: 'Type in Your Password'
+		},
+		value: '',
+		validation: {
+			required: true,
+			minLength: 6
+		},
+		valid: false,
+		touched: false
+	},
+	confirmPassword: {
+		label: 'Confirm Password',
+		elementType: 'input',
+		elementConfig: {
+			type:'password',
+			placeholder: 'Confirm your password'
+		},
+		value: '',
+		validation: {
+			required: true,
+			minLength: 6
+		},
+		valid: false,
+		touched: false
+	},
+	
+};
+
+export const signupKey = {
+	key: {
+		label: 'Key',
+		elementType: 'input',
+		elementConfig:{
+			type:'password',
+			placeholder: 'the authentication key'
+		},
+		value: '',
+		validation: {
+			required: true
+		},
+		valid: false,
+		touched: false
+	},
 };
 
 export const newOrderData = {

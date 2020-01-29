@@ -20,39 +20,11 @@ class Calls extends Component {
 	};
 
 	fetchCallsHandler = () => {
-		const url = 'https://portfolio-ccandpc.firebaseio.com/calls.json';
-		this.setState({loadingCalls: true});
-		axios.get(`${url}?auth=${this.props.token}`)
+		this.setState({ loadingCalls: true });
+		axios.get('http://localhost:8080/admin/calls')
 			.then(response => {
-				const formDataArray = [];
-				console.log(response.data);
-				for( let id in response.data.await) {
-					const newCallObject = {
-						id: id,
-						...response.data.await[id]
-					};
-					formDataArray.push(newCallObject);
-				};
-				const newArray = formDataArray.map(object => {
-					let contactDataValues = [];
-					for(let key in object) {
-						if(key === 'email' || key === 'whatsapp' || key === 'vk'
-							|| key === 'facebook' || key === 'skype') {
-								contactDataValues.push(object[key]);
-						};
-					};
-					const newObject = {
-						id: object.id,
-						name: object.name,
-						gender: object.gender,
-						location: `${object.country}, ${object.city}`,
-						timezone: object.timezone,
-						contactData: contactDataValues.join(', ')
-					};
-					return object = newObject;
-				});
-				console.log(newArray);
-				this.setState({fetchedCalls: newArray, loadingCalls: false});
+				const fetchedCalls = response.data.calls;
+				this.setState({ fetchedCalls: fetchedCalls, loadingCalls: false });
 			}).catch(error => {
 				console.log(error);
 				this.setState({ loadingCalls: false });
@@ -60,26 +32,22 @@ class Calls extends Component {
 	};
 
 	deleteCallHandler = (id) => {
-		//Save the call to add it to the archive
-		const callTOArchive = this.state.fetchedCalls.filter(call => call.id === id);
-		console.log(callTOArchive);
-
 		//Update Fetched Calls Array
-		const newCallsArray = this.state.fetchedCalls.filter(call => call.id !== id);
+		const newCallsArray = this.state.fetchedCalls.filter(call => call._id !== id);
 		this.setState({fetchedCalls: newCallsArray});
 
 		//Delete the call
-		axios.delete(`https://portfolio-ccandpc.firebaseio.com/calls/await/${id}.json?auth=${this.props.token}`);
+		axios.delete(`http://localhost:8080/admin/call/${id}`)
+			.then(result => {
+				console.log(result);
+			});
+	};
 
-		//Post the call to the database
-		axios.post(`https://portfolio-ccandpc.firebaseio.com/calls/archived.json?auth=${this.props.token}`, callTOArchive[0])
-			.then(response => {
-				alert(`${callTOArchive[0].name} was added to the archived node of the database`);
-			}).catch(error => console.log(error.message));
+	createOrder = (id) => {
+		//create an order from the call data
 	};
 
 	
-
 	render() {
 		let calls;
 
@@ -87,19 +55,19 @@ class Calls extends Component {
 		else {
 			calls = this.state.fetchedCalls.map(call => {
 				return (
-					<Card key={call.name}>
+					<Card key={call._id}>
 						<h2>{call.name}</h2>
-						<p>Gender: {call.gender}</p>
 						<p>Location: {call.location}</p>
 						<p>Timezone: {call.timezone}</p>
 						<p>Contact Data: {call.contactData}</p>
-						<Button clicked={()=> this.deleteCallHandler(call.id)}>Done</Button>
+						<Button clicked={()=> this.deleteCallHandler(call._id)}>Done</Button>
+						<Button clicked={()=> this.createOrder(call._id)}>Create an Order</Button>
 					</Card>
 				);
 			});
 		}
 		return(
-			<div>
+			<div className='Calls'>
 				<h1>Calls</h1>
 				{calls}
 			</div>

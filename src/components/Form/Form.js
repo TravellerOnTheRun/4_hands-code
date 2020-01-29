@@ -4,22 +4,22 @@ import { withRouter } from 'react-router-dom';
 import Input from './Input/Input';
 import { formData } from './formData';
 import Button from '../Reusables/Button/Button';
-import axios from '../../axios-forms.js';
+import axios from 'axios';
 import Spinner from '../Reusables/Spinner/Spinner';
 import './Form.css';
 
 class Form extends Component {
 	state = {
-			form: formData,
-			loading: false,
-			formIsValid: false,
-			optionals: {
-				email: '',
-				whatsapp: '',
-				vk: '',
-				facebook: '',
-				skype: ''
-			}
+		form: formData,
+		loading: false,
+		formIsValid: false,
+		optionals: {
+			email: '',
+			whatsapp: '',
+			vk: '',
+			facebook: '',
+			skype: ''
+		}
 	};
 
 	checkOptionalSetFormValid = () => {
@@ -72,34 +72,56 @@ class Form extends Component {
 
 		//Setting the value of optionals state
 		if( updatedFormElement.validation.required && updatedFormElement.validation.optional) {
-			const newObject = {
+			const newformData = {
 				...this.state.optionals,
 				[inputIdentifier] : event.target.value
 			};
-			this.setState({optionals: newObject});
+			this.setState({optionals: newformData});
 		};
 
 		for(let inputIdentifier in updatedForm) {
-				formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
+			formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
 		};
 		this.setState({form: updatedForm, formIsValid: formIsValid && optionalsAreFilledIn});
 	};
 
 	submitTheForm = (event) => {
 		event.preventDefault();
-		this.setState({loading:true});
-		const formData = {};
+		this.setState({ loading:true });
+		let formData = {};
 		
 		for (let formElementIdentifier in this.state.form) {
-			//Getting rid of empty input fields
 			if(this.state.form[formElementIdentifier].value.trim() !== '') {
-				formData[formElementIdentifier] = this.state.form[formElementIdentifier].value;
-			};	
+				formData[formElementIdentifier] = this.state.form[formElementIdentifier].value; 	
+			}	
 		};
 
-		axios.post('/calls/await.json', formData)
+		let contactDataValues = [];
+
+		for(let key in formData) {
+			if(	key === 'email' || 
+				key === 'whatsapp' ||
+				key === 'vk' || 
+				key === 'facebook' ||
+				key === 'skype' ||
+				key === 'telegram'
+			) {
+				contactDataValues.push(formData[key]);
+			};
+		};
+
+		const updatedFormData = {
+			name: formData.name,
+			location: `${formData.country}, ${formData.city}`,
+			timezone: formData.timezone,
+			contactData: contactDataValues.join(', '),
+			additionalInfo: formData.additionalInfo
+		};
+
+		axios.post('http://localhost:8080/form/call', updatedFormData)
 			.then(response => {
-				this.setState({loading:false})
+				console.log(response);
+				this.setState({ loading:false })
 				this.props.history.push('/')
 			}).catch(error => console.log(error));
 	};

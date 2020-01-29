@@ -83,7 +83,7 @@ const  Portfolio = props => {
 	return(
 		<React.Fragment>
 			<header>
-				<Nav navLinks={navLinksArray}/>
+				<Nav navLinks={linksArray}/>
 			</header>
 			<main>
 				{routes}

@@ -4,7 +4,8 @@ const initialState = {
     token: null,
     userId: null,
     error: null,
-    loading: false
+    loading: false,
+    url: '/'
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -20,6 +21,7 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 token: action.payload.token,
                 userId: action.payload.userId,
+                url: action.payload.url,
                 error: null,
                 loading: false
             };
