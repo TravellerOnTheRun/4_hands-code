@@ -1,0 +1,15 @@
+.jumboContact {
+	margin: 1rem;
+	margin-top: 10vh;
+	color: #29211F;
+}
+
+.jumboContactTitle {
+	text-align: center;
+	padding: 1rem;
+}
+
+.jumboContactText {
+	padding: 0.4rem;
+	text-align: center;
+}

@@ -1,0 +1,28 @@
+div .intro_demo-services {
+    color: #29211F;
+    background-color: #CCC591;
+    margin-bottom: 0;
+    padding-top: 1rem;
+    /* position: relative;
+    top: 10vh; */
+    margin: 4rem 0;
+}
+
+.intro_demo-services--header {
+    /* margin: 0 5rem; */
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+    padding-bottom: 0;
+    border-top: 0.2rem solid black;
+}
+
+.intro_demo-services--text {
+    text-align: left;
+    padding: 1rem 2rem;
+}
+
+.demo_services--buttons {
+    background-color: #CCC591;
+    margin: 0;
+}

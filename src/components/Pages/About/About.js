@@ -9,7 +9,7 @@ class About extends Component {
 	render() {
 		return (
 			<div>
-				<Jumbo type='about'/>
+				<Jumbo className='jumboAbout' type='about'/>
 				<ShowCaseContainer />
 				<div id='form'><Form /></div>
 			</div>

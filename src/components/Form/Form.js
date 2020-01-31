@@ -121,8 +121,9 @@ class Form extends Component {
 			displayComponent = (
 				<div className='form'>
 					<form onSubmit={this.submitTheForm}>
+						<p className='input-header'>Для обратной связи дайте нам о вас знать!</p>
 						{formElementsArray.map(formElement => (
-							<Input
+							<Input className='input'
 								key={formElement.id}
 								elementType={formElement.config.elementType}
 								elementConfig={formElement.config.elementConfig}
@@ -133,7 +134,7 @@ class Form extends Component {
 								shouldValidate={formElement.config.validation}
 								touched={formElement.config.touched}/>
 							))}
-						*Выберите подходящий вам способ связи
+						<p className='input-star'>*Выберите подходящий вам способ связи</p>
 						<br/> 
 						<Button disabled={!this.state.formIsValid} className='btn' ownStyle='btnForm'>Отправить</Button>
 					</form>

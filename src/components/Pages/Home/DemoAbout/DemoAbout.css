@@ -1,16 +1,14 @@
 .demo_about {
     border-top: 0.2rem solid #CCC591;
-    border-bottom: 0.2rem solid #CCC591;
+    /* border-bottom: 0.2rem solid #CCC591; */
     color: #fafafa;
     margin: 1rem;
     padding: 1rem;
     position: relative;
     top: 10vh;
-    display: block;
+    margin-bottom: 0;
 }
 
-.demo_about--button {
+Button .demo_about--button {
     background-color: #8E2E08;
-    padding: 0.3rem 1rem;
-    border-radius: 0.5rem;
 }
