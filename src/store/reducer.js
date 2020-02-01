@@ -5,7 +5,7 @@ const initialState = {
     userId: null,
     error: null,
     loading: false,
-    url: '/'
+    pushToSignin: false
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -23,12 +23,15 @@ const reducer = ( state = initialState, action ) => {
                 userId: action.payload.userId,
                 url: action.payload.url,
                 error: null,
-                loading: false
+                loading: false,
+                pushToSignin: false
             };
         case actions.AUTH_FAILURE:
             return { ...state, error: action.error, loading: false };
         case actions.AUTH_LOGOUT:
             return { ...state, token: null, userId: null };
+        case actions.PUSH_TO_SIGNIN:
+            return { ...state, pushToSignin: true };
         default:
             return state;
     };

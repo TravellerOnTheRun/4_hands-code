@@ -13,14 +13,19 @@ const Clients = props => {
 	const [ makingClient, setMakingClient ] = useState(false);
 
 	useEffect(() => {
-		axios.get(`https://portfolio-ccandpc.firebaseio.com/clients.json?auth=${props.token}`)
+		axios.get(`http://localhost:8080/admin/clients`, {
+			headers: {
+				Authorization: props.token
+			}
+		})
 			.then(response => {
 				const clientsArray = [];
-				//TODO Add Clients Here
-				console.log(response);
+				for( let client in response.data.clients) {
+					clientsArray.push(response.data.clients[client]);
+				};
 				setClients(clientsArray);
 			}).catch(error => console.log(error));
-	}, []);
+	},[]);
 
 	const toggleClientMaker = () => {
 		setMakingClient(!makingClient);
@@ -31,11 +36,20 @@ const Clients = props => {
 	if(makingClient) clientMaker = <NewClient toggleClientMaker={toggleClientMaker}/>;
 
 	return (
-		<Container>
+		<Container className='ClientsContainer'>
 			<Button clicked={toggleClientMaker}>Make a New Client</Button>
 			{clients.map(client => (
-				<Card key={client.id}>
-					{/*TODO Fill in the Client Form */}
+				<Card key={client._id}>
+					<img src={'http://localhost:8080/' + client.imageUrl}/>
+					<h1>{client.name}</h1>
+					<p>{client.character}</p>
+					<p>{client.contactData}</p>
+					<p>{client.linkToWebsite}</p>
+					<p>{client.email_subsribtion}</p>
+					<p>{client.subsribtion}</p>
+					<p>{client.projects}</p>
+					<p>{client.satisfactionRate}</p>
+					<p>{client.moneyTransaction}</p>
 				</Card>
 			))}
 			{clientMaker}

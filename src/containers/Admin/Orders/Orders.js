@@ -13,54 +13,43 @@ const Orders = props => {
 	const [ creatingOrder, setCreatingOrder ] = useState(false);
 	const [ currentOrders, setCurrentOrders ] = useState([]);
 	const [ archivedOrders, setArchivedOrders ] = useState([]);
+	const [ updatingOrders, setUpdatingOrders ] = useState(true);
 
 	//Fetch the orders
 	useEffect(() => {
-		axios.get('https://portfolio-ccandpc.firebaseio.com/orders.json?auth=' + props.token)
+		axios.get('http://localhost:8080/admin/orders', {
+			headers: {
+				Authorization: props.token
+			}
+		})
 			.then( response => {
 				const currentOrdersArray = [];
 				const archivedOrdersArray = [];
-				for( let order in response.data.current) {
-					const newObject = {
-						id: order,
-						...response.data.current[order]
+				for( let order in response.data.orders) {
+					if(response.data.orders[order].archived) {
+						archivedOrdersArray.push(response.data.orders[order]);
+					} else {
+						currentOrdersArray.push(response.data.orders[order]);
 					};
-					currentOrdersArray.push(newObject);
 				};
-				if(response.data.archived) {
-					for( let order in response.data.archived) {
-						const newObject = {
-							id: order,
-							...response.data.archived[order]
-						}
-						archivedOrdersArray.push(newObject);
-					};
-					setArchivedOrders(archivedOrdersArray);
-				};
+				setArchivedOrders(archivedOrdersArray);
 				setCurrentOrders(currentOrdersArray);
-				
+				setUpdatingOrders(false);
 			});
-	}, [props.token]);
+	}, [props.token, updatingOrders]);
 
-	const archiveTheOrder = (nameOfTheOrder) => {
-		//Save the order to add it to the Archived node
-		let orderToDelete = null;
-
-		//Update the Current Orders Array
-		const newCurrentOrders = currentOrders.filter(order => nameOfTheOrder !== order.nameOfTheOrder);
-		setCurrentOrders(newCurrentOrders);
-
-		//Delete The Finished order from the database
-		orderToDelete = currentOrders.filter(order => nameOfTheOrder === order.nameOfTheOrder);
-		const id = orderToDelete[0].id;
-		axios.delete(`https://portfolio-ccandpc.firebaseio.com/orders/current/${id}.json?auth=${props.token}`);
-
-		//Add The Finished order to archived node of the Database
-		axios.post(`https://portfolio-ccandpc.firebaseio.com/orders/archived.json?auth=${props.token}`, orderToDelete[0])
-			.then(response => {
-				alert(`Posted ${id} to the database`);
-			})
-			.catch(error => console.log(error));
+	const archiveTheOrder = (id) => {
+		axios.put('http://localhost:8080/admin/order', {
+			id: id,
+			archived: true
+		}, {
+			headers: {
+				Authorization: props.token
+			}
+		})
+		.then(response => {
+			setUpdatingOrders(true);
+		});
 	};
 
 	const creatingOrderHandler = () => {
@@ -69,8 +58,10 @@ const Orders = props => {
 	let newOrderComponent = null;
 	if(creatingOrder) {
 		newOrderComponent = <NewOrder 
-								ordersProps={props} 
-								creatingOrder={creatingOrderHandler} />
+								higherProps={props} 
+								creatingOrder={creatingOrderHandler} 
+								orders
+								newOrderObjectData/>
 	};
 
 	return (
@@ -88,7 +79,7 @@ const Orders = props => {
 					<Container>
 						<h1>Current Orders</h1>
 						{currentOrders.map(order => (
-							<Card key={order.nameOfTheOrder}>
+							<Card key={order._id}>
 								<h1>{order.nameOfTheOrder}</h1>
 								<p>{order.description}</p>
 								<h2>{order.name}</h2>
@@ -96,7 +87,7 @@ const Orders = props => {
 								<p>{order.location}</p>
 								<p>{order.timezone}</p>
 								<p>{order.notes}</p>
-								<Button clicked={() => archiveTheOrder(order.nameOfTheOrder)}>Mark as finished</Button>
+								<Button clicked={() => archiveTheOrder(order._id)}>Mark as finished</Button>
 							</Card>
 						))}
 					</Container>

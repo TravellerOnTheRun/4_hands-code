@@ -120,8 +120,7 @@ class Form extends Component {
 
 		axios.post('http://localhost:8080/form/call', updatedFormData)
 			.then(response => {
-				console.log(response);
-				this.setState({ loading:false })
+				this.setState({ loading: false })
 				this.props.history.push('/')
 			}).catch(error => console.log(error));
 	};

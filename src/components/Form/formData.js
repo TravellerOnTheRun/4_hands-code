@@ -211,7 +211,15 @@ export const newOrderData = {
 };
 
 export const newClientData = {
-	image: formInputCreator('file', 'Image', 'file'),
+	image: {
+		label: 'File',
+		elementType: 'input',
+		elementConfig: {
+			type: 'file'
+		},
+		value: ''
+
+	},
 	link: formInputCreator('input', 'Link', 'text', 'link from their website' ),
 	name: formInputCreator('input', 'Name', 'text', 'enter the name'),
 	character: formInputCreator('textarea', 'Character', 'text', 'describe the character'),

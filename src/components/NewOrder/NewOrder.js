@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -13,6 +13,24 @@ import Button from '../Reusables/Button/Button';
 const NewOrder = props => {
 
     const [ form, setForm ] = useState(newOrderData);
+
+    const [ idOfTheCall ] = useState(props.newOrderObjectData._id || null);
+
+    
+
+    useEffect(() => {
+        const updatedForm = { ...form };
+        const arrayOfnewOrderObjectDataKeys = Object.keys(props.newOrderObjectData);
+
+        for( let key in updatedForm) {
+            arrayOfnewOrderObjectDataKeys.forEach(orderKey => {
+                if(key === orderKey) {
+                    updatedForm[key].value = props.newOrderObjectData[key];
+                }
+            })
+        };
+        setForm(updatedForm);
+    }, [props.newOrderObjectData]);
 
     const inputChangedHandler = (event, inputIdentifier) => {
         const updatedForm = { ...form };
@@ -29,15 +47,25 @@ const NewOrder = props => {
         for( let element in form) {
             formData[element] = form[element].value;
         };
-        axios.post('https://portfolio-ccandpc.firebaseio.com/orders/current.json?auth=' + props.token, formData)
+        axios.post('http://localhost:8080/admin/order', formData, {
+            headers: {
+				Authorization: props.token
+			}
+        })
             .then( response => {
-                props.creatingOrder();
-                alert('New Order has been published');
-            });
+                if(props.orders) {
+                    props.creatingOrder();
+                } else {
+                    props.deleteCallHandler(idOfTheCall);
+                    props.abort();
+                }
+                alert(`New Order: ${response.order.nameOfTheOrder} has been published`);
+            })
+            .catch(err => console.log(err));
     };
 
     const goBack = () => {
-       props.ordersProps.history.goBack();
+       props.higherProps.history.goBack();
        props.creatingOrder();
     };
 
@@ -62,8 +90,12 @@ const NewOrder = props => {
                         label={formElement.config.label} />
                 ))}
                 <Button>Submit</Button>
+                { 
+                    props.orders 
+                    ? <Button clicked={goBack}>Cancel</Button>
+                    : <Button clicked={props.abort}>Cancel</Button>
+                }
             </form>
-            <Button clicked={goBack}>Cancel</Button>
         </Card>
     );
 };

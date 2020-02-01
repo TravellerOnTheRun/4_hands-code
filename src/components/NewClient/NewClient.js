@@ -9,33 +9,46 @@ import Button from '../Reusables/Button/Button';
 
 const NewClient = props => {
     const [ form, setForm ] = useState(newClientData);
+    const [ image, setImage ] = useState(null);
 
     const inputChangedHandler = (event, inputIdentifier) => {
         const updatedForm = { ...form };
         const updatedFormElement = { ...updatedForm[inputIdentifier] };
-        updatedFormElement.value = event.target.value;
+        if(event.target.files) {
+            updatedFormElement.value = event.target.value;
+            setImage(event.target.files[0]);
+        } else {
+            updatedFormElement.value = event.target.value;
+        }
         updatedForm[inputIdentifier] = updatedFormElement;
-        console.log(updatedForm);
         setForm(updatedForm);
     };
 
     const submitTheClient = (event) => {
         event.preventDefault();
-        const formData = {};
+        const formData = new FormData();
 
         for( let element in form) {
-            formData[element] = form[element].value;
+            if(element === 'image') {
+                formData.append(`${element}`, image);
+            } else {
+                formData.append(`${element}`, form[element].value);
+            } 
         };
-        axios.post('https://portfolio-ccandpc.firebaseio.com/clients.json?auth=' + props.token, formData)
-            .then( response => {
-                props.toggleClientMaker();
-                alert('New Client has been added');
-            });
+        axios.post('http://localhost:8080/admin/client', formData, {
+            headers: {
+				Authorization: props.token
+			}
+        })
+        .then( response => {
+            props.toggleClientMaker();
+            alert('New Client has been added');
+        });
     };
 
     const goBack = () => {
-       props.ordersProps.history.goBack();
-       props.creatingOrder();
+    //    props.ordersProps.history.goBack();
+    //    props.creatingOrder();
     };
 
     let formElementsArray = [];
