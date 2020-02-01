@@ -6,13 +6,16 @@ import * as actions from '../../../store/actions';
 import Card from '../../../components/Reusables/Card/Card';
 import Spinner from '../../../components/Reusables/Spinner/Spinner';
 import Button from '../../../components/Reusables/Button/Button';
+import NewOrder from '../../../components/NewOrder/NewOrder';
 
 
 class Calls extends Component {
 
 	state = {
 		fetchedCalls: [],
-		loadingCalls: false
+		loadingCalls: false,
+		isNewOrder: false,
+		newOrderObjectData: {}
 	};
 
 	componentDidMount(){
@@ -21,7 +24,11 @@ class Calls extends Component {
 
 	fetchCallsHandler = () => {
 		this.setState({ loadingCalls: true });
-		axios.get('http://localhost:8080/admin/calls')
+		axios.get('http://localhost:8080/admin/calls', {
+			headers: {
+				Authorization: this.props.token
+			}
+		})
 			.then(response => {
 				const fetchedCalls = response.data.calls;
 				this.setState({ fetchedCalls: fetchedCalls, loadingCalls: false });
@@ -37,7 +44,11 @@ class Calls extends Component {
 		this.setState({fetchedCalls: newCallsArray});
 
 		//Delete the call
-		axios.delete(`http://localhost:8080/admin/call/${id}`)
+		axios.delete(`http://localhost:8080/admin/call/${id}`, {
+			headers: {
+				Authorization: this.props.token
+			}
+		})
 			.then(result => {
 				console.log(result);
 			});
@@ -45,11 +56,28 @@ class Calls extends Component {
 
 	createOrder = (id) => {
 		//create an order from the call data
+		const callCreationData = this.state.fetchedCalls.filter(call => call._id === id)[0];
+		console.log(callCreationData);
+		this.setState({ isNewOrder: true, newOrderObjectData: callCreationData });
+	};
+
+	abortNewOrder = () => {
+		this.setState({ isNewOrder: false });
 	};
 
 	
 	render() {
 		let calls;
+		let newOrder = null;
+
+		if(this.state.isNewOrder) {
+			newOrder = (
+				<NewOrder 
+					abort={this.abortNewOrder} 
+					newOrderObjectData={this.state.newOrderObjectData}
+					deleteCallHandler={this.deleteCallHandler}/>
+			);
+		};
 
 		if(this.state.loadingCalls) calls = <Spinner />;
 		else {
@@ -60,7 +88,7 @@ class Calls extends Component {
 						<p>Location: {call.location}</p>
 						<p>Timezone: {call.timezone}</p>
 						<p>Contact Data: {call.contactData}</p>
-						<Button clicked={()=> this.deleteCallHandler(call._id)}>Done</Button>
+						<Button clicked={()=> this.deleteCallHandler(call._id)}>Delete</Button>
 						<Button clicked={()=> this.createOrder(call._id)}>Create an Order</Button>
 					</Card>
 				);
@@ -69,7 +97,8 @@ class Calls extends Component {
 		return(
 			<div className='Calls'>
 				<h1>Calls</h1>
-				{calls}
+				{ calls }
+				{ newOrder}
 			</div>
 
 		);

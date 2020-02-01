@@ -51,14 +51,6 @@ const Input = ( props ) => {
 				</select>
 			);
 			break;
-		case('file'):
-			inputElement = <input 
-								className={inputStyles.join(' ')} 
-								{...props.elementConfig}
-								accept='image/*' 
-								value={props.value}
-								onChange={props.changed}/>;
-			break;
 		default:
 			inputElement = <input 
 								className={inputStyles} 

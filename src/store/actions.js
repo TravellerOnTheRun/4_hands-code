@@ -4,6 +4,7 @@ export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+export const PUSH_TO_SIGNIN = 'PUSH_TO_SIGNIN';
 
 export const authStart = () => {
     return {
@@ -42,6 +43,7 @@ export const checkAuthTimeout = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
             dispatch(authLogout());
+            dispatch(pushToSigninAfterLogout());
         }, expirationTime);
     };
 };
@@ -100,6 +102,12 @@ export const signup = (name, email, password, pushToAdminPage) => {
             })
             .catch(err => console.log(err));
     }
+};
+
+const pushToSigninAfterLogout = () => {
+    return {
+        type: PUSH_TO_SIGNIN
+    };
 };
 
 

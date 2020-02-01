@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from '../../axios-forms';
 import { connect } from 'react-redux';
 
@@ -47,6 +47,8 @@ const navLinksArray = [
 		
 
 const  Portfolio = props => {
+
+
 	let routes = (
 		<Switch>
 			<Route path='/' exact component={Home}/>
