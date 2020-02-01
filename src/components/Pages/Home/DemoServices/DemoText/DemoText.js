@@ -1,4 +1,5 @@
 import React from 'react';
+import './DemoText.css';
 
 const DemoText = (props) =>
 	{
@@ -8,7 +9,7 @@ const DemoText = (props) =>
 			{
 				case 'Custom Design':
 					textbox = (
-						<div>
+						<div className='demo_services--buttons'>
 							<h2>{props.part}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -17,7 +18,7 @@ const DemoText = (props) =>
 					break;
 				case 'Content Creation':
 					textbox = (
-						<div>
+						<div  className='demo_services--buttons'>
 							<h2>{props.part}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -26,7 +27,7 @@ const DemoText = (props) =>
 					break;
 				case 'Copywriting':
 					textbox = (
-						<div>
+						<div  className='demo_services--buttons'>
 							<h2>{props.part}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -35,7 +36,7 @@ const DemoText = (props) =>
 					break;
 				case 'SEO':
 					textbox = (
-						<div>
+						<div  className='demo_services--buttons'>
 							<h2>{props.part}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -44,7 +45,7 @@ const DemoText = (props) =>
 					break;
 				case 'Project Management':
 					textbox = (
-						<div>
+						<div  className='demo_services--buttons'>
 							<h2>{props.part}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -53,7 +54,7 @@ const DemoText = (props) =>
 					break;
 				case 'Testing and Training':
 					textbox = (
-						<div>
+						<div  className='demo_services--buttons'>
 							<h2>{props.part}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -62,7 +63,7 @@ const DemoText = (props) =>
 					break;
 				case 'Consultations':
 					textbox = (
-						<div>						
+						<div  className='demo_services--buttons'>						
 							<h2>{props.part}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -71,9 +72,14 @@ const DemoText = (props) =>
 					break;
 				default:
 					textbox = (
-						<div>
-							<h2>What makes a website?</h2>
-							<p>Something like: "You buy service, not a comodity"</p>
+						<div className='intro_demo-services'>
+							<h2 className='intro_demo-services--header'>Что такое вебсайт?</h2>
+							<p className='intro_demo-services--text'>Когда вы напишите нам, что хотели бы заказать сайт, мы хотим, чтобы вы знали - вы покупаете услугу, 
+							а не товар. Что все это значит? Мы имеем в виду, что заказать сайт - это не то же самое, что купить машину. Это не нечто цельное, заранее 
+							готовое. Вебсайт - абсолютно индивидуальная вещь. Вебсайт - это интерактивная реклама вас, вашего бизнеса, вашей огранизации. Мы не можем 
+							заранее сказать вам, сколько вам будет стоить наша работа.
+							Единственный способ узнать - позвонить нам и рассказать о ваших желаниях и ожиданиях. 
+							Мы красочно распишем вам процесс работы и выведем сумму. </p>
 						</div>
 						);
 

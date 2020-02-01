@@ -5,10 +5,10 @@ import DemoAbout from './DemoAbout/DemoAbout';
 import DemoServices from './DemoServices/DemoServices';
 import Form from '../../Form/Form';
 
-import styles from './Home.module.css';
+import './Home.css';
 
 const Home = () =>(
-	<div className={styles.Home}>
+	<div className='home'>
 		<Jumbo type='home'/>
 		<DemoAbout />
 		<DemoServices />

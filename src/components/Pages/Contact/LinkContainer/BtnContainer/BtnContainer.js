@@ -1,7 +1,8 @@
 import React from 'react';
+import './BtnContainer.css';
 
 const BtnContainer = () => (
-		<div>
+		<div className='contactLinks'>
 			<p>E-mail</p>
 			<p>WhatsApp</p>
 			<p>VK</p>
