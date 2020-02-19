@@ -2,13 +2,13 @@
     z-index: 11;
     display: inline-block;
     margin: 0;
-    /* top: 1rem;
-    left: 2rem; */
-    padding: 0.3rem;
+    padding: 0;
     /* position: fixed;  */
-    left: 0rem;
-    top: 0rem;
+    left: 1rem;
+    top: 1rem;
     position: relative;
+    display: block;
+	z-index: 12;
 }
 
 @media (min-width: 840px) {
