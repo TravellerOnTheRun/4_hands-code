@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 
 import DemoText from './DemoText/DemoText';
-import BtnContainer from './BtnContainer/BtnContainer';
+import Slider from './Slider/Slider';
 import './DemoServices.css';
 
 class DemoServices extends Component {
 	state = {
-		paragraphSwitch: 'cusDes',
 		paragraphName: ''
 	};
 
-	textChanger = (paragraphName) => {
+	slideChangeHandler = (paragraphName) => {
 		this.setState({ paragraphName: paragraphName });
 	};
 
 
 	render() {
 		return (
-			<div className='demo-services'>
+			<Slider onChangeSlide={this.slideChangeHandler}>
 				<DemoText part={this.state.paragraphName} />
-				<BtnContainer textChanger={(paragraphName) => this.textChanger(paragraphName)} />
-			</div>
+			</Slider>
 		);
 	};
 
