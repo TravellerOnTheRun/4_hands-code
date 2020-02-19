@@ -157,7 +157,7 @@ class Form extends Component {
 							))}
 						<p className='input-star'>*Выберите подходящий вам способ связи</p>
 						<br/> 
-						<Button disabled={!this.state.formIsValid} className='btn' ownStyle='btnForm'>Отправить</Button>
+						<Button disabled={!this.state.formIsValid} className='btn' ownStyle='Button send_button'>Отправить</Button>
 					</form>
 				</div>
 			);

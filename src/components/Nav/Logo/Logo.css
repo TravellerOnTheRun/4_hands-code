@@ -1,11 +1,21 @@
 .logo {
     z-index: 11;
-    display: block;
-    width: 5vw;
-    height: 5vh;
+    display: inline-block;
     margin: 0;
-    top: 0;
-    left: 0;
+    /* top: 1rem;
+    left: 2rem; */
     padding: 0.3rem;
-    position: fixed;
+    /* position: fixed;  */
+    left: 0rem;
+    top: 0rem;
+    position: relative;
 }
+
+@media (min-width: 840px) {
+    .logo {
+        position: fixed;
+        top: 1rem;
+        left: 2rem;        
+    }
+}
+

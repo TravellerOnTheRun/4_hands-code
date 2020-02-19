@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from '../../axios-forms';
 import { connect } from 'react-redux';
 
@@ -16,6 +16,10 @@ import Admin from '../Admin/Admin';
 import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
+import Logo from '../../components/Nav/Logo/Logo';
+import Button from '../../components/Reusables/Button/Button';
+import Backdrop from '../../components/UI/Backdrop/Backdrop';
+import MobileNav from '../../components/Nav/MobileNav/MobileNav';
 
 
 const navLinksArray = [
@@ -47,7 +51,13 @@ const navLinksArray = [
 		
 
 const  Portfolio = props => {
+	const [isBackropOn, setIsBackdropOn] = useState(false);
+	const [isMobileNavOn, setIsMobileNavOn] = useState(false);
 
+	const switchBackdropAndMobileNav = () => {
+		setIsBackdropOn(!isBackropOn);
+		setIsMobileNavOn(!isMobileNavOn);
+	};
 
 	let routes = (
 		<Switch>
@@ -84,9 +94,17 @@ const  Portfolio = props => {
 
 	return(
 		<React.Fragment>
+			<Backdrop backdrop={isBackropOn} clicked={switchBackdropAndMobileNav}/>
 			<header>
+				<Logo />
 				<Nav navLinks={linksArray}/>
+				<Button ownStyle='burgerMenu' clicked={switchBackdropAndMobileNav}>
+					<span className="toggle-button__bar"></span>
+					<span className="toggle-button__bar"></span>
+					<span className="toggle-button__bar"></span>
+				</Button>
 			</header>
+			<MobileNav mobileNav={isMobileNavOn} navLinks={linksArray}/>
 			<main>
 				{routes}
 			</main>

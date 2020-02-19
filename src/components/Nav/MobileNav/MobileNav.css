@@ -1,0 +1,35 @@
+.mobile-nav {
+    display: block;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    background: #798E87;
+    width: 80%;
+    height: 100vh;
+  }
+  
+  .mobile-nav__items {
+    width: 90%;
+    height: 100%;
+    list-style: none;
+    margin: 10% auto;
+    padding: 0;
+    text-align: center;
+    display: block;
+  }
+
+  .mobile-nav__items li {
+    display: block;
+    margin-bottom: 2rem;
+  }
+  
+  .mobile-nav__item {
+    margin: 1rem 0;
+    display: block;
+  }
+  
+  .mobile-nav__item a {
+    font-size: 1.5rem;
+    display: block;
+  }

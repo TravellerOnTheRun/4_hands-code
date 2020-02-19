@@ -4,11 +4,25 @@
     color: #fafafa;
     margin: 1rem;
     padding: 1rem;
-    position: relative;
-    top: 10vh;
     margin-bottom: 0;
 }
 
-Button .demo_about--button {
+.demo_about_text {
+    font-size: 1.3rem;
+    font-weight: lighter;
+}
+
+.demo_about--button {
+	padding: 1rem;
     background-color: #8E2E08;
+    width: 80vw;
+    border: 0.5rem solid #8E2E08;
+    margin-top: 1.5rem;
+}
+
+.demo_about--button a {
+    list-style: none;
+    text-decoration: none;
+    color: #CCC591;
+    font-size: 1.3rem;
 }

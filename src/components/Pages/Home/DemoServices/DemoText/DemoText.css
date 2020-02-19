@@ -5,13 +5,15 @@ div .intro_demo-services {
     padding-top: 1rem;
     /* position: relative;
     top: 10vh; */
-    margin: 4rem 0;
+    padding-bottom: 2rem;
+    margin: 4rem 0 0 0;
 }
 
 .intro_demo-services--header {
     /* margin: 0 5rem; */
     text-align: center;
     margin: 1rem;
+    margin-bottom: 0;
     padding: 1rem;
     padding-bottom: 0;
     border-top: 0.2rem solid black;
@@ -19,7 +21,10 @@ div .intro_demo-services {
 
 .intro_demo-services--text {
     text-align: left;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
+    border-bottom: 0.2rem solid black;
+    width: 90vw;
+    margin: auto;
 }
 
 .demo_services--buttons {

@@ -1,9 +1,10 @@
 
 .nav {
     display: block;
+    visibility: hidden;
     width: 100vw;
     height: 10vh;
-    background-color: #C27D38;
+    background: transparent;
     margin: 0;
     top: 0;
     left: 0;
@@ -15,7 +16,7 @@
 ul {
     margin: 0 0;
     padding: 1rem 1rem;
-    text-align: right;
+    text-align: center;
 }
 
 li {
@@ -23,12 +24,12 @@ li {
 }
 
 li a {
+    font-size: 1.5rem;
     list-style: none;
     text-decoration: none;
     color: #CCC591;
     margin: 0;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
+    padding: 0.5rem 2rem;
     vertical-align: middle;
 }
 
@@ -49,4 +50,10 @@ li a:active {
     background-color: #CCC591;
     color: #8E2E08;
     border: none;
+}
+
+@media (min-width: 840px) {
+    .nav {
+        visibility: visible;
+    }
 }
