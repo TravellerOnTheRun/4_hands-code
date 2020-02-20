@@ -16,6 +16,17 @@ const Slider = props => {
     const [curSlide, setCurSlide] = useState(0);
 
     useEffect(() => {
+        setTimeout(() => {
+            if(curSlide >= 0 && curSlide !== slides.length -1) {
+                setCurSlide(curSlide + 1); 
+            };
+            if(curSlide === slides.length - 1) {
+                setCurSlide(0);
+            };
+        }, 5000);
+    }, [curSlide]);
+
+    useEffect(() => {
         props.onChangeSlide(slides[curSlide]);
     }, [curSlide]);
 
