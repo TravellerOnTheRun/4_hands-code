@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../../../Reusables/Button/Button';
 
 const Slider = props => {
-    const [slides, setSlides] = useState([
+    const [slides] = useState([
         'default',
         'Custom Design',
         'Content Creation',
