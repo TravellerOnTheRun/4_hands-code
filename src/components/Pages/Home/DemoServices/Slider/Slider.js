@@ -20,8 +20,7 @@ const Slider = props => {
         setTimeout(() => {
             if(curSlide >= 0 && curSlide !== slides.length -1) {
                 setCurSlide(curSlide + 1); 
-            };
-            if(curSlide === slides.length - 1) {
+            } else {
                 setCurSlide(0);
             };
         }, 5000);
@@ -34,16 +33,16 @@ const Slider = props => {
     const nextSlide = () => {
         if(curSlide === slides.length - 1) {
             setCurSlide(0);
-            return;
+        } else {
+            setCurSlide(curSlide + 1);
         };
-        setCurSlide(curSlide + 1);
     };
     const previousSlide = () => {
         if(curSlide === 0) {
             setCurSlide(slides.length -1);
-            return;
-        }
-        setCurSlide(curSlide - 1);
+        } else {
+            setCurSlide(curSlide - 1);
+        }; 
     };
 
     return (
