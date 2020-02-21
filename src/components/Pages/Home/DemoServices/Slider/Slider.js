@@ -15,15 +15,20 @@ const Slider = props => {
         'Consultations'
     ]);
     const [curSlide, setCurSlide] = useState(0);
+    const [sliderCountDown, setSliderCountDown] = useState(null);
 
     useEffect(() => {
-        setTimeout(() => {
-            if(curSlide >= 0 && curSlide !== slides.length -1) {
-                setCurSlide(curSlide + 1); 
-            } else {
-                setCurSlide(0);
-            };
-        }, 5000);
+        if (sliderCountDown) {
+            clearTimeout(sliderCountDown);
+        };
+        setSliderCountDown(setTimeout(() => {
+                if (curSlide >= 0 && curSlide !== slides.length - 1) {
+                    setCurSlide(curSlide + 1);
+                } else {
+                    setCurSlide(0);
+                };
+            }, 5000)
+        );
     }, [curSlide]);
 
     useEffect(() => {
@@ -31,18 +36,18 @@ const Slider = props => {
     }, [curSlide]);
 
     const nextSlide = () => {
-        if(curSlide === slides.length - 1) {
+        if (curSlide === slides.length - 1) {
             setCurSlide(0);
         } else {
             setCurSlide(curSlide + 1);
         };
     };
     const previousSlide = () => {
-        if(curSlide === 0) {
-            setCurSlide(slides.length -1);
+        if (curSlide === 0) {
+            setCurSlide(slides.length - 1);
         } else {
             setCurSlide(curSlide - 1);
-        }; 
+        };
     };
 
     return (
