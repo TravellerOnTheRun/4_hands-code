@@ -1,0 +1,22 @@
+.slider {
+    position: relative;
+    background: url(../../../../../assets/Images/Background pic.jpg);
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* position: relative; */
+    width: 100vw;
+    z-index: 999;
+}
+
+.layer {
+    background: rgba(0, 0, 0, .7);
+    z-index: 1000;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+

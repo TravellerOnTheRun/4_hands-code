@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Slider.css';
 
 import Button from '../../../../Reusables/Button/Button';
 
@@ -47,9 +48,16 @@ const Slider = props => {
 
     return (
         <div className='slider'>
-            <Button ownStyle='btn-next' clicked={nextSlide}>Next</Button>
+            <div className='layer'></div>
+            <Button ownStyle='btn-next' clicked={nextSlide}>
+                {/* <span></span> */}
+                <span></span>
+            </Button>
             {props.children}
-            <Button ownStyle='btn-previous' clicked={previousSlide}>Previous</Button>
+            <Button ownStyle='btn-previous' clicked={previousSlide}>
+                {/* <span></span> */}
+                <span></span>
+            </Button>
         </div>
     );
 };

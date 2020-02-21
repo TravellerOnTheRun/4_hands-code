@@ -1,33 +1,37 @@
 div .intro_demo-services {
-    color: #29211F;
-    background-color: #CCC591;
-    margin-bottom: 0;
-    padding-top: 1rem;
-    /* position: relative;
-    top: 10vh; */
-    padding-bottom: 2rem;
-    margin: 4rem 0 0 0;
+    color: seashell;
+    font-size: 1.3rem;
+    background-color: transparent;
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    z-index: 1001;
 }
 
 .intro_demo-services--header {
     /* margin: 0 5rem; */
     text-align: center;
     margin: 1rem;
-    margin-bottom: 0;
-    padding: 1rem;
-    padding-bottom: 0;
-    border-top: 0.2rem solid black;
+  
 }
 
 .intro_demo-services--text {
-    text-align: left;
-    padding: 2rem 2rem;
-    border-bottom: 0.2rem solid black;
-    width: 90vw;
+    text-align: center;
+    padding: 2rem 4rem;
     margin: auto;
 }
 
 .demo_services--buttons {
-    background-color: #CCC591;
+    background-color: transparent;
     margin: 0;
+    position: absolute;
+    top: 30%;
+    text-align: center;
+    padding: 0 4rem;
+    font-size: 1.6rem;
+    z-index: 1001;
+    color: seashell;
+
 }
