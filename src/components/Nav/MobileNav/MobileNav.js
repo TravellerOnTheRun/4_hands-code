@@ -12,7 +12,8 @@ const MobileNav = props => {
 						<li key={navLink.label}>
 							<Link
 								className={navLink.className} 
-								to={navLink.to}>{navLink.label}</Link>
+								to={navLink.to}
+                                onClick={props.clicked}>{navLink.label}</Link>
 						</li>
 					);
 				})}
