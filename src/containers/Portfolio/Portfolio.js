@@ -40,7 +40,7 @@ const navLinksArray = [
 		to: '/contact/',
 		label: 'Связь',
 		id: 'svyaz'
-	}, 
+	},
 	{
 		className: 'a four',
 		to: '/services/',
@@ -48,9 +48,9 @@ const navLinksArray = [
 		id: 'uslugi'
 	}
 ];
-		
 
-const  Portfolio = props => {
+
+const Portfolio = props => {
 	const [isBackropOn, setIsBackdropOn] = useState(false);
 	const [isMobileNavOn, setIsMobileNavOn] = useState(false);
 
@@ -61,24 +61,24 @@ const  Portfolio = props => {
 
 	let routes = (
 		<Switch>
-			<Route path='/' exact component={Home}/>
-			<Route path='/about/' exact component={About}/>
-			<Route path='/services/' exact component={Services}/>
-			<Route path='/contact/' exact  component={Contact}/>
+			<Route path='/' exact component={Home} />
+			<Route path='/about/' exact component={About} />
+			<Route path='/services/' exact component={Services} />
+			<Route path='/contact/' exact component={Contact} />
 			<Route path='/admin-auth' component={Auth} />
 			<Route render={() => <h1>Page you're looking for does not exist</h1>} />
 		</Switch>
 	);
 
 	let linksArray;
-	if(props.token) {
-		routes= (
+	if (props.token) {
+		routes = (
 			<Switch>
-				<Route path='/' exact component={Home}/>
-				<Route path='/about/' exact component={About}/>
-				<Route path='/services/' exact component={Services}/>
-				<Route path='/contact/' exact  component={Contact}/>
-				<Route path='/admin-4h_ands' component={Admin}/>
+				<Route path='/' exact component={Home} />
+				<Route path='/about/' exact component={About} />
+				<Route path='/services/' exact component={Services} />
+				<Route path='/contact/' exact component={Contact} />
+				<Route path='/admin-4h_ands' component={Admin} />
 				<Route render={() => <h1>Page you're looking for does not exist</h1>} />
 			</Switch>
 		);
@@ -92,31 +92,35 @@ const  Portfolio = props => {
 		linksArray = navLinksArray.filter(el => el.id !== 'admin');
 	};
 
-	return(
+	return (
 		<React.Fragment>
-			<Backdrop backdrop={isBackropOn} clicked={switchBackdropAndMobileNav}/>
+			<Backdrop backdrop={isBackropOn} clicked={switchBackdropAndMobileNav} />
 			<header>
 				<Logo />
-				<Nav navLinks={linksArray}/>
+				<Nav navLinks={linksArray} />
 				<Button ownStyle='burgerMenu' clicked={switchBackdropAndMobileNav}>
 					<span className="toggle-button__bar"></span>
 					<span className="toggle-button__bar"></span>
 					<span className="toggle-button__bar"></span>
 				</Button>
 			</header>
-			<MobileNav mobileNav={isMobileNavOn} navLinks={linksArray}/>
+			<MobileNav
+				mobileNav={isMobileNavOn}
+				navLinks={linksArray}
+				clicked={switchBackdropAndMobileNav}
+			/>
 			<main>
 				{routes}
 			</main>
 			<Footer />
-		</React.Fragment>			
+		</React.Fragment>
 	);
 };
 
 const mapStateToProps = state => {
 	return {
 		token: state.token
-	};	
+	};
 };
 
-export default connect(mapStateToProps)(withErrorHandler( Portfolio, axios ));
+export default connect(mapStateToProps)(withErrorHandler(Portfolio, axios));
