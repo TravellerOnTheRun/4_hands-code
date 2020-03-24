@@ -1,6 +1,7 @@
 import dummy1 from '../../../../../assets/webscreens/dummy1.png';
 import dummy2 from '../../../../../assets/webscreens/dummy2.png';
 import dummy3 from '../../../../../assets/webscreens/dummy3.png';
+import './websites.css';
 
 
 export const showcases = [
@@ -9,8 +10,7 @@ export const showcases = [
 		screenshot: dummy1,
 		screenshotDesc: '',
 		link: '/',
-		description: `Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
+		description: `Смотрите, вот это ненастоящий сайт, который мы еще не сделали, но скоро сделаем.`
 	},
 
 	{
@@ -18,8 +18,7 @@ export const showcases = [
 		screenshot: dummy2,
 		screenshotDesc: '',
 		link: '/',
-		description: `Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
+		description: `Смотрите, вот это еще один ненастоящий сайт, который мы еще не сделали, но скоро сделаем.`
 	},
 
 	{
@@ -27,8 +26,7 @@ export const showcases = [
 		screenshot: dummy3,
 		screenshotDesc: '',
 		link: '/',
-		description: `Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
+		description: `Смотрите, вот это третий ненастоящий сайт, который мы еще не сделали, но скоро сделаем.`
 	}
 	
 ];

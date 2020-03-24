@@ -1,14 +1,13 @@
 .logo {
-    z-index: 11;
-    display: inline-block;
     margin: 0;
     padding: 0;
-    /* position: fixed;  */
-    left: 1rem;
+    left: 0rem;
     top: 1rem;
     position: relative;
     display: block;
-	z-index: 12;
+    z-index: 12;
+    overflow: hidden;
+    z-index: 1002;
 }
 
 @media (min-width: 840px) {
@@ -18,4 +17,3 @@
         left: 2rem;        
     }
 }
-

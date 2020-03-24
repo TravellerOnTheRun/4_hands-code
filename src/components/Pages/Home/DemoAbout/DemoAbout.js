@@ -14,7 +14,7 @@ const DemoAbout = () => {
 					пользоваться вашими услугами, покупать ваши товары. Спасибо вам за это. 
 					А наша работа - помочь вам эти услуши и товары донести до людей с максимальным комфортом. 
 				</p>
-			<Button ownStyle='demo_about--button'><Link to='/about/'>About Us</Link></Button>
+			<Button ownStyle='Button btnDemoAbout'><Link to='/about/'>About Us</Link></Button>
 			</div>
 		</React.Fragment>
 	);

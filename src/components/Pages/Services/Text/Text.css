@@ -1,1 +1,57 @@
+.row {
+    color: seashell;
+    margin: 2rem 0.5rem;
+}
 
+.mainThought {
+    font-size: 2rem;
+    border-top: 0.2rem solid seashell;
+    border-bottom: 0.2rem solid seashell;
+    margin: 2rem 0;
+    background-color: rgba(204, 197, 143, .6);
+}
+
+.box {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone,
+.talk,
+.thumbup {
+    width: 30vw;
+    margin: 0.5rem;
+    border-radius: 2rem 2rem;
+    box-shadow: 0rem 0.5rem 1rem;
+}
+
+.pricing {
+    margin: 2rem 0.8rem;
+    color: seashell;
+}
+
+.head_pricing {
+    font-size: 1.7rem;
+    text-align: center;
+    margin: 2rem 0;
+    margin-bottom: 0;
+    color: #CCC591
+}
+
+.pricing_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.point {
+    border-bottom: 0.4rem solid #CCC591;
+    font-size: 1.4rem;
+    width: 90vw;
+    margin-top: 2rem;
+    margin-bottom: 1.3rem;
+}

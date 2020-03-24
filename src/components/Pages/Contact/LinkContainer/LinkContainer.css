@@ -1,10 +1,10 @@
 .linkContainer {
     text-align: center;
-    margin: 3rem 1rem;
-    margin-bottom: 0;
+    margin: 2rem 1rem;
+    margin-bottom: 2rem;
     padding: 2rem;
-    border-top: 0.2rem solid #CCC591;
     color: #29211F;
+    color: seashell;
 }
 
 .linkContainer h1 {

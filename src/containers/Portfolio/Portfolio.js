@@ -20,6 +20,7 @@ import Logo from '../../components/Nav/Logo/Logo';
 import Button from '../../components/Reusables/Button/Button';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import MobileNav from '../../components/Nav/MobileNav/MobileNav';
+import './Portfolio.css';
 
 
 const navLinksArray = [

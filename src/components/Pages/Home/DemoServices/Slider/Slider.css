@@ -1,4 +1,4 @@
-.slider {
+ .slider {
     position: relative;
     background: url(../../../../../assets/Images/Background pic.jpg);
     background-position: center;
@@ -10,6 +10,7 @@
     /* position: relative; */
     width: 100vw;
     z-index: 999;
+    box-sizing: border-box;
 }
 
 .layer {
@@ -18,5 +19,7 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-}
+} 
+
+
 

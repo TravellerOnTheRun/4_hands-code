@@ -20,6 +20,11 @@
     margin-top: 1.5rem;
 }
 
+.btnDemoAbout a {
+	color: seashell;
+	text-decoration: none;
+}
+
 .demo_about--button a {
     list-style: none;
     text-decoration: none;

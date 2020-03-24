@@ -5,7 +5,7 @@ import LinkContainer from './LinkContainer/LinkContainer';
 import './Contact.css';
 
 const Contact = () =>(
-	<div>
+	<div className='contactPage'>
 		<Jumbo className='jumboContact'/>
 		<Form />
 		<LinkContainer />

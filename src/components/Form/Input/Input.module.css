@@ -1,6 +1,6 @@
 .Input
 	{
-		width: 80%;
+		width: 90vw;
 		padding: 10px;
 		box-sizing: border-box;
 	}
@@ -12,19 +12,27 @@
 	}
 .InputElement
 	{
-		outline: none;
+		/* outline: none;
 		border: 1px solid #ccc;
 		background-color: white;
 		font: inherit;
 		padding: 6px 10px;
 		display: block;
 		width: 100%;
-		box-sizing: border-box;
+		box-sizing: border-box; */
+		width: 95vw;
+		font: inherit;
+		border: none;
+		border-bottom: 2px solid #8E2E08;
+		background-color: #798E87;  
 	}
 .InputElement:focus
 	{
+		/* outline: none;
+		background-color: #ccc; */
 		outline: none;
-		background-color: #ccc;
+		background: #CCC591;
+		border-bottom: 3px solid #8E2E08;
 	}
 
 .Invalid

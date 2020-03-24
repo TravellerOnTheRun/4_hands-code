@@ -27,3 +27,91 @@
         
     }
 }
+
+.jumboAbout {
+    background-image: url(../../images/jumbo.png);
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    height: 90vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0vh;
+    width: 100vw;
+    z-index: 1000;
+}
+
+.jumboAbout p {
+    text-align: center;
+    padding: 0 1rem;
+    margin: 0 1rem;
+}
+
+.layer-about {
+    background-color: rgba(0, 0, 0, .6);
+    width: 100vw;
+    height: 90vh;
+    z-index: 10023
+}
+
+.text-about {
+    z-index: 1002;
+    color: seashell;
+    position: absolute;
+    top: 3vh;
+    text-align: center;
+}
+
+.text-about h1 {
+    margin-bottom: 1.5rem;
+}
+
+.text-about p {
+    padding: 0 0rem;
+    font-size: 1.1rem;
+}
+
+.jumboContact  {
+    background-image: url(../../images/jumbo.png);
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0vh;
+    width: 100vw;
+    z-index: 1000;
+}
+
+.jumboContactTitle {
+    padding: 0;
+    color: seashell;
+}
+
+.jumboContactText {
+    color: seashell;
+}
+
+.jumbot {
+    background-image: url(../../images/jumbo.png);
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    height: 90vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0vh;
+    width: 100vw;
+    z-index: 1002;
+    
+}
+
+.textbox {
+    color: seashell;
+    padding-top: 5rem;
+    text-align: center;
+}
