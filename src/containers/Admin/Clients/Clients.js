@@ -12,10 +12,12 @@ const Clients = props => {
 	const [ clients, setClients ] = useState([]);
 	const [ makingClient, setMakingClient ] = useState(false);
 
+	const { token } = props;
+
 	useEffect(() => {
 		axios.get(`http://localhost:8080/admin/clients`, {
 			headers: {
-				Authorization: props.token
+				Authorization: token
 			}
 		})
 			.then(response => {
@@ -25,7 +27,7 @@ const Clients = props => {
 				};
 				setClients(clientsArray);
 			}).catch(error => console.log(error));
-	},[]);
+	},[token]);
 
 	const toggleClientMaker = () => {
 		setMakingClient(!makingClient);
@@ -40,7 +42,7 @@ const Clients = props => {
 			<Button clicked={toggleClientMaker}>Make a New Client</Button>
 			{clients.map(client => (
 				<Card key={client._id}>
-					<img src={'http://localhost:8080/' + client.imageUrl}/>
+					<img alt='client_image' src={'http://localhost:8080/' + client.imageUrl}/>
 					<h1>{client.name}</h1>
 					<p>{client.character}</p>
 					<p>{client.contactData}</p>
