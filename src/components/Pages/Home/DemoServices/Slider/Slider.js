@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Slider.css';
 
 import Button from '../../../../Reusables/Button/Button';
@@ -15,50 +15,48 @@ const Slider = props => {
         'Consultations'
     ]);
     const [curSlide, setCurSlide] = useState(0);
-    const [sliderCountDown, setSliderCountDown] = useState(null);
 
-    useEffect(() => {
-        if (sliderCountDown) {
-            clearTimeout(sliderCountDown);
-        };
-        setSliderCountDown(setTimeout(() => {
-                if (curSlide >= 0 && curSlide !== slides.length - 1) {
-                    setCurSlide(curSlide + 1);
-                } else {
-                    setCurSlide(0);
-                };
-            }, 5000)
-        );
-    }, [curSlide]);
+    const { onChangeSlide } = props;
 
-    useEffect(() => {
-        props.onChangeSlide(slides[curSlide]);
-    }, [curSlide]);
-
-    const nextSlide = () => {
-        if (curSlide === slides.length - 1) {
+    const nextSlide = useCallback((currentSlide, slidesArray) => {
+        if (currentSlide === slidesArray.length - 1) {
             setCurSlide(0);
         } else {
-            setCurSlide(curSlide + 1);
+            setCurSlide(currentSlide + 1);
         };
-    };
-    const previousSlide = () => {
-        if (curSlide === 0) {
-            setCurSlide(slides.length - 1);
+    }, []);
+
+    const previousSlide = useCallback((currentSlide, slidesArray) => {
+        if (currentSlide === 0) {
+            setCurSlide(slidesArray.length - 1);
         } else {
-            setCurSlide(curSlide - 1);
+            setCurSlide(currentSlide - 1);
         };
-    };
+    }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            nextSlide(curSlide, slides)
+        }, 5000)
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [nextSlide, curSlide, slides]);
+
+    useEffect(() => {
+        onChangeSlide(slides[curSlide]);
+    }, [curSlide, onChangeSlide, slides]);
+
 
     return (
         <div className='slider'>
             <div className='layer'></div>
-            <Button ownStyle='btn-next' clicked={nextSlide}>
+            <Button ownStyle='btn-next' clicked={() => nextSlide(curSlide, slides)}>
                 {/* <span></span> */}
                 <span></span>
             </Button>
             {props.children}
-            <Button ownStyle='btn-previous' clicked={previousSlide}>
+            <Button ownStyle='btn-previous' clicked={() => previousSlide(curSlide, slides)}>
                 {/* <span></span> */}
                 <span></span>
             </Button>

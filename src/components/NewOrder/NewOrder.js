@@ -16,21 +16,22 @@ const NewOrder = props => {
 
     const [ idOfTheCall ] = useState(props.newOrderObjectData._id || null);
 
+    const { newOrderObjectData, } = props;
     
 
     useEffect(() => {
         const updatedForm = { ...form };
-        const arrayOfnewOrderObjectDataKeys = Object.keys(props.newOrderObjectData);
+        const arrayOfnewOrderObjectDataKeys = Object.keys(newOrderObjectData);
 
         for( let key in updatedForm) {
             arrayOfnewOrderObjectDataKeys.forEach(orderKey => {
                 if(key === orderKey) {
-                    updatedForm[key].value = props.newOrderObjectData[key];
+                    updatedForm[key].value = newOrderObjectData[key];
                 }
             })
         };
         setForm(updatedForm);
-    }, [props.newOrderObjectData]);
+    }, [newOrderObjectData, form]);
 
     const inputChangedHandler = (event, inputIdentifier) => {
         const updatedForm = { ...form };

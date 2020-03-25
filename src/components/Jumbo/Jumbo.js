@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '../Reusables/Button/Button';
-import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import './Jumbo.css';
 // import image from '../../assets/Pictures/Jumbo_services.jpg';
